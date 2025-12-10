@@ -37,14 +37,15 @@ RUN npm install && npm run build
 
 RUN chown -R www-data:www-data storage bootstrap/cache
 
-# Stage 2: Run App
-FROM php:8.2-cli
+# Stage 2: Production Image
+FROM php:8.2-fpm
 
 WORKDIR /var/www/html
 
 COPY --from=php-base /var/www/html /var/www/html
 
+# Expose the default Render port
 EXPOSE 10000
 
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=${PORT}"]
-
+# Start PHP-FPM (use Nginx or Render’s internal routing for HTTP)
+CMD ["php-fpm"]
