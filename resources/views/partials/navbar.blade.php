@@ -2,7 +2,7 @@
   <div class="bg-info text-white fixed-top py-1" style="z-index:1100;">
     <marquee id="intakeMarquee"behavior="scroll" direction="left">
          January Intake Ongoing 🚀 — 
-        <a href="{{ route('academic.programs') }}"
+        <a href="{{ route('academic.application') }}"
            class="btn btn-warning btn-sm mx-2"
            style="font-weight: bold; border-radius: 20px;">
            Apply Now
