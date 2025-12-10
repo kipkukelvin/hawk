@@ -1,6 +1,6 @@
-# Stage 1: Build PHP dependencies
-FROM php:8.2-fpm AS php-base
+FROM php:8.2-fpm
 
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
@@ -10,9 +10,14 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libpq-dev \
     zip \
-    curl \
-    npm \
-    && docker-php-ext-install \
+    curl
+
+# Install Node.js (for Vite)
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+RUN apt-get install -y nodejs
+
+# Install PHP extensions
+RUN docker-php-ext-install \
         pdo_mysql \
         mbstring \
         exif \
@@ -20,29 +25,24 @@ RUN apt-get update && apt-get install -y \
         bcmath \
         gd \
         zip \
-        pdo_pgsql \
-    && docker-php-ext-enable pdo_pgsql
+        pdo_pgsql
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-COPY . /var/www/html
+# Copy source code
+COPY . .
 
+# Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Build Vite assets
+# Build assets
 RUN npm install && npm run build
 
-RUN chown -R www-data:www-data storage bootstrap/cache
-
-# Stage 2: Run App
-FROM php:8.2-cli
-
-WORKDIR /var/www/html
-
-COPY --from=php-base /var/www/html /var/www/html
+# Permissions
+RUN chmod -R 777 storage bootstrap/cache
 
 EXPOSE 10000
 
