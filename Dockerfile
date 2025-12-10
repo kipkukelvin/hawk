@@ -46,4 +46,5 @@ COPY --from=php-base /var/www/html /var/www/html
 
 EXPOSE 10000
 
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=${PORT}"]
+
