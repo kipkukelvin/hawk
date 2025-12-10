@@ -26,9 +26,9 @@
         </span> -->
       </a>
 
-      <ul class="nav nav-pills">
-        <li class="nav-item fs-6"><a href="" class="nav-link">Administration</a></li>
-  <li class="nav-item dropdown fs-6 position-static">
+      <ul class="nav nav-pills fs-5">
+        <li class="nav-item"><a href="" class="nav-link">Administration</a></li>
+  <li class="nav-item dropdown position-static">
     <div class="nav-link dropdown-toggle text-decoration-none" id="academicsDropdown" 
     role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Academics</div>
@@ -89,8 +89,8 @@
             </div>
           </div>
         </li>
-        <li class="nav-item fs-6"><a href="{{ route('academic.faqs') }}" class="nav-link">FAQs</a></li>
-        <li class="nav-item fs-6"><a href="{{ route('about') }}" class="nav-link">About Us</a></li>
+        <li class="nav-item"><a href="{{ route('academic.faqs') }}" class="nav-link">FAQs</a></li>
+        <li class="nav-item"><a href="{{ route('about') }}" class="nav-link">About Us</a></li>
       </ul>
     </div>
 

@@ -3,9 +3,13 @@
 @section('title', 'Mission, Vission and Core Values - Siloam College')
 
  @section('content')
+ <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
   <div class="class-name text-start">
-     <h1 class="class-name mb-4 mt-4 text-capitalize text-center">About Us</h1>
-    <h2 class="class-name mb-4 text-center text-capitalize">Shaping Minds, Changing lives</h2>
+     <h1 class="class-name mb-2 mt-5 text-capitalize text-center">About Us</h1>
+      <span style="display:block; width:60px; height:2px; background:#0dcaf0; margin:5px auto 0;"></span>
+    <h2 class="class-name mb-2 mt-5 text-capitalize text-center">welcome to siloam medical, tehnical, and commercial training college.</h2>
+        <span style="display:block; width:200px; height:2px; background:#0dcaf0; margin:5px auto 0;"></span>
+     <h3 class="mb-4 mt-4 text-start fs-5 text-muted">Siloam College operates with the explicit mandate to prepare world-class healthcare professionals who will transform healthcare systems, both locally and globally. We fulfill this mandate by dedicating our resources to delivering innovative education and training programs, cultivating compassionate leaders ready to drive positive community health outcomes.</h3>
       <div class="bg-info text-white py-2 rounded">
       <p class="class-name text-center lead text-center fw-bold fs-4 m-0">
 Mission, Vission, and Core Values.

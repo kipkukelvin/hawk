@@ -19,6 +19,11 @@
     width: 90%;
     color: white;
     text-shadow: 0 3px 10px rgba(0,0,0,0.75);
+     pointer-events: none;
+}
+.hero-overlay a,
+.hero-overlay button {
+    pointer-events: auto;
 }
 
 .hero-title {
