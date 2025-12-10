@@ -3,7 +3,8 @@ FROM php:8.2-fpm AS php-base
 
 RUN apt-get update && apt-get install -y \
     git unzip libpng-dev libonig-dev libxml2-dev libzip-dev zip curl npm \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip \
+    && docker-php-ext-install pdo_pgsql pgsql   # <-- ADD THIS FOR POSTGRES
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -14,7 +15,7 @@ COPY . /var/www/html
 
 RUN composer install --no-dev --optimize-autoloader
 
-# Build assets (only if using Vite)
+# Build assets (Vite)
 RUN npm install && npm run build
 
 RUN chown -R www-data:www-data storage bootstrap/cache
